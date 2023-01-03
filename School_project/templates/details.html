@@ -1,0 +1,143 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Fill The Form</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+      <!-- style css -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+      <!-- fevicon -->
+      <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+   </head>
+   <body>
+      <div class="header_section header_bg">
+         <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+               <a class="navbar-brand" href="index"><img src="{% static 'images/LOGO1.png' %}" height="30px" width="100px"></a>&nbsp;
+               <a class="navbar-brand" href="index.html"><b>School Store</b></a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+            </nav>
+         </div>
+      </div>
+
+      <div class="about_section layout_padding margin_top0">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <div>
+                  <h2 style="text-align:center;">Fill The Form</h2>
+                  </div>
+                   <form action="pending" method="post" id="indexForm" data-courses-url="{% url 'ajax_load_courses' %}">
+                       {% csrf_token %}
+                       <label><b style=font-size:100%;color:#151B54>Name:</b></label><br>
+                       <input type="text" name="first_name" placeholder="Enter your name"><br><br>
+                       <label><b style=font-size:100%;color:#151B54>D.O.B:</b></label><br>
+                       <input type="date"><br><br>
+                       <label><b style=font-size:100%;color:#151B54>Age:</b></label><br>
+                       <input type="text" name="age" placeholder="Enter your age"><br><br>
+                       <label><b style=font-size:100%;color:#151B54>Gender:</b></label><br>
+                       <select id="gender" name="gender">
+                           <option value=" ">------</option>
+                           <option value="Male">Male</option>
+                           <option value="Female">Female</option>
+                       </select><br><br>
+                       <label><b style=font-size:100%;color:#151B54>Phone Number:</b></label><br>
+                       <input type="text" name="number" placeholder="Enter phone number"><br><br>
+                       <label><b style=font-size:100%;color:#151B54>E-mail:</b></label><br>
+                       <input type="email" name="email" placeholder="Enter your email id"><br><br>
+                       <label><b style=font-size:100%;color:#151B54>Current address:</b></label><br>
+                       <input type="text" name="Address" placeholder="enter your address" height="50px"><br><br>
+                       <label><b style=font-size:100%;color:#151B54>Department</b></label><br>
+                       <select name="programming" id="programming">
+                           <option value="">---Select District---</option>
+                           {% for i in program %}
+                           <option value="{{i.id}}">{{i.name}}</option>
+                           {% endfor %}
+                       </select>
+                       <br><br>
+                       <label><b style=font-size:100%;color:#151B54>Courses</b></label><br>
+                       <select name="courses" id="courses"></select><br><br>
+                       <label><b style=font-size:100%;color:#151B54>Purpose:</b></label><br>
+                       <select id="purpose" name="purpose">
+                           <option value="">----------</option>
+                           <option value="Enquiry">Enquiry</option>
+                           <option value="Place order">Place order</option>
+                           <option value="report">Report</option>
+                           <option value="return">Return</option>
+                       </select><br><br>
+                       <label><b style=font-size:100%;color:#151B54>Meterial Require :</b></label><br>
+                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="checkbox" id="meteriel1" name="notebook" value="notebook">
+                       <label for="meteriel1"><b style=font-size:100%;color:#728FCE> Debit Note Book</b></label><br>
+                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="checkbox" id="meteriel2" name="pen" value="pen">
+                       <label for="meteriel2"> <b style=font-size:100%;color:#728FCE>Pen</b></label><br>
+                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="checkbox" id="meteriel3" name="exam pepper" value="exam pepper">
+                       <label for="meteriel3"><b style=font-size:100%;color:#728FCE> Exam Pepper</b></label><br><br>
+                       <div class="read_bt"><input type="Submit" value="Submit" style="font-weight:light;font-size:20px;background-color:inherit;width:5em;height:2em;"></div><br><br>
+                       <div class="read_bt"><a href="logout">logout</a></div>
+                   </form>
+               </div>
+            </div>
+         </div>
+      </div>
+
+
+<div class="copyright_section">
+    <div class="container">
+        <p class="copyright_text">2020 All Rights Reserved. Design by <a href="https://html.design">Free html  Templates</a></p>
+    </div>
+</div>
+      <!-- copyright section end -->
+      <!-- Javascript files-->
+<!--<script src="{% static 'js/jquery.min.js' %}"></script>-->
+<!--<script src="{% static 'js/popper.min.js' %}"></script>-->
+<!--<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>-->
+<!--<script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>-->
+<!--<script src="{% static 'js/plugin.js' %}"></script>-->
+<!--      &lt;!&ndash; sidebar &ndash;&gt;-->
+<!--<script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>-->
+<!--<script src="{% static 'js/custom.js' %}"></script>-->
+<!--      &lt;!&ndash; javascript &ndash;&gt;-->
+<!--<script src="{% static 'js/owl.carousel.js' %}"></script>-->
+<!--<script src="{% static 'https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js' %}"></script>-->
+<!--<script src="{% static 'https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript' %}"></script>-->
+</body>
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+$("#programming").change(function () {
+var url = $("#indexForm").attr("data-courses-url");  // get the url of the `load_courses` view
+var programmingId = $(this).val();  // get the selected programming ID from the HTML input
+$.ajax({                       // initialize an AJAX request
+url: url,                    // set the url of the request (= localhost:8000/load-courses/)
+data: {
+'programming': programmingId       // add the programming id to the GET parameters
+},
+success: function (data) {   // `data` is the return of the `load_courses` view function
+$("#courses").html(data);  // replace the contents of the course input with the data that came from the server
+}
+
+});
+});
+</script>
+
+</html>
